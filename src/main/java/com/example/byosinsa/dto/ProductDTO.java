@@ -1,6 +1,9 @@
 package com.example.byosinsa.dto;
 
 import com.example.byosinsa.entity.Product;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -17,7 +20,7 @@ import org.modelmapper.ModelMapper;
 @Builder
 public class ProductDTO {
 
-    private Long pno;
+    private int pno;
 
     @NotBlank
     private String pName;

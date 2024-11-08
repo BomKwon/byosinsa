@@ -11,6 +11,7 @@ import java.net.URLEncoder;
 @ToString
 @Builder
 public class ImgDTO {
+
     private String fileName;
     private String uuid;
     private String mainImg;

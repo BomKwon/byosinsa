@@ -13,7 +13,7 @@ public class ProductImg {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long pino;
+    private int pino;
 
     private String filename;
 
