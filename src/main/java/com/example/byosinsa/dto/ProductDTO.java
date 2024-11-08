@@ -13,6 +13,9 @@ import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,16 +31,17 @@ public class ProductDTO {
     @NotBlank
     private String pDetail;
 
+    @NotBlank
+    private String category;
+
     @NotNull
     private int price;
 
+    private int discount;
 
-    private static ModelMapper modelMapper = new ModelMapper();
-
-    public Product newProduct(){
-
-        return modelMapper.map(this, Product.class);
-    }
+    //상품 이미지
+    @Builder.Default
+    private List<ImgDTO> productImageDTOList = new ArrayList<>();
 
 
 }

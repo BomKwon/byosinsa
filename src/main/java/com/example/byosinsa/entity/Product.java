@@ -22,6 +22,13 @@ public class Product {
     @Column(length = 50000)
     private String pDetail;
 
+    private String category;
+
     private int price;
+
+    private int discount;
+
+
+
 
 }

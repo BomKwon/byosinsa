@@ -76,36 +76,36 @@ public class FileService {
 
     //@Scheduled(cron = "0/60 * * * * ?") //60초 마다 실행
     //파일 자동 삭제
-//    public void deleteAllFile(){
-//        List<ProductImg> productImgList = productImgRepository.findAll();
-//
-//        List<Path> fileListPaths = productImgList.stream()
-//                .map(productImg -> Paths.get("c:\\product",productImg.getUuid() + "_" + productImg.getFilename()))
-//                .collect(Collectors.toList());
-//
-//
-//        productImgList.stream()
-//                .map(productImg -> Paths.get("c:\\product","s_"+productImg.getUuid() + "_" + productImg.getFilename()))
-//                .forEach(p -> fileListPaths.add(p));
-//
-//        log.info("fileListPaths"+fileListPaths);
-//
-//        File targetDir = Paths.get("c:\\product\\").toFile();
-//
-//        log.info("targetDir"+targetDir);
-//
-//        File[] removeFiles = targetDir.listFiles(file -> fileListPaths.contains(file.toPath()) == false);
-//
-//        log.info("removeFiles"+removeFiles);
-//
-//        for (File file : removeFiles){
-//
-//            log.warn(file.getAbsolutePath());
-//
-//            file.delete();
-//        }
-//
-//    }
+    public void deleteAllFile(){
+        List<ProductImg> productImgList = productImgRepository.findAll();
+
+        List<Path> fileListPaths = productImgList.stream()
+                .map(productImg -> Paths.get("c:\\product",productImg.getUuid() + "_" + productImg.getFilename()))
+                .collect(Collectors.toList());
+
+
+        productImgList.stream()
+                .map(productImg -> Paths.get("c:\\product","s_"+productImg.getUuid() + "_" + productImg.getFilename()))
+                .forEach(p -> fileListPaths.add(p));
+
+        log.info("fileListPaths"+fileListPaths);
+
+        File targetDir = Paths.get("c:\\product\\").toFile();
+
+        log.info("targetDir"+targetDir);
+
+        File[] removeFiles = targetDir.listFiles(file -> fileListPaths.contains(file.toPath()) == false);
+
+        log.info("removeFiles"+removeFiles);
+
+        for (File file : removeFiles){
+
+            log.warn(file.getAbsolutePath());
+
+            file.delete();
+        }
+
+    }
 
 
 }

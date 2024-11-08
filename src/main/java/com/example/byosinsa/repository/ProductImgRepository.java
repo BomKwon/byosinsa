@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ProductImgRepository extends JpaRepository<ProductImg, Long> {
+public interface ProductImgRepository extends JpaRepository<ProductImg, Integer> {
 
     List<ProductImg> findByProduct_Pno(int pno);
     //aa
