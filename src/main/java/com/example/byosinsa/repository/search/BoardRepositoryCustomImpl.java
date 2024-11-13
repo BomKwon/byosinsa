@@ -1,11 +1,11 @@
 package com.example.byosinsa.repository.search;
 
 
-import com.example.game.dto.PageRequestDTO;
-import com.example.game.dto.search.BoardSearchDTO;
-import com.example.game.dto.search.QBoardSearchDTO;
-import com.example.game.entity.QBoard;
-import com.example.game.entity.QBoardImage;
+import com.example.byosinsa.dto.PageRequestDTO;
+import com.example.byosinsa.dto.search.BoardSearchDTO;
+import com.example.byosinsa.dto.search.QBoardSearchDTO;
+import com.example.byosinsa.entity.QBoard;
+import com.example.byosinsa.entity.QBoardImage;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;

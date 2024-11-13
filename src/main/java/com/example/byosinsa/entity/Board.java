@@ -34,5 +34,5 @@ public class Board extends Base {
 
     //기본값
     @ColumnDefault("0")
-    private Long views;
+    private int views;
 }

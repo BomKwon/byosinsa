@@ -1,5 +1,6 @@
 package com.example.byosinsa.dto.search;
 
+import com.example.byosinsa.entity.Board;
 import com.example.byosinsa.entity.BoardCategory;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
@@ -13,7 +14,8 @@ import java.net.URLEncoder;
 @ToString
 @NoArgsConstructor
 public class BoardSearchDTO {
-    private Long bno;
+
+    private int bno;
 
     private String bTitle;
 
@@ -24,16 +26,17 @@ public class BoardSearchDTO {
     private BoardCategory boardCategory;
 
     // 조회수
-    private Long views;
+    private int views;
 
-    private Long boardImgno;
+    private int boardImgno;
+
     private String fileName;
     private String uuid;
     private String folderPath;
     private Board board;
 
     @QueryProjection
-    public BoardSearchDTO(Long bno, String bTitle, String bContent, String bWriter, BoardCategory boardCategory, Long views, Long boardImgno, String fileName, String uuid, String folderPath) {
+    public BoardSearchDTO(int bno, String bTitle, String bContent, String bWriter, BoardCategory boardCategory, int views, int boardImgno, String fileName, String uuid, String folderPath) {
         this.bno = bno;
         this.bTitle = bTitle;
         this.bContent = bContent;

@@ -19,12 +19,12 @@ public class BoardDTO {
 
     private String bWriter;
 
-    private Long cno;
+    private int cno;
 
-    private Long cName;
+    private int cName;
 
     // 조회수
-    private Long views;
+    private int views;
 
 
     @Builder.Default

@@ -241,9 +241,9 @@ public class BoardService {
 //        return boardCategoryRepository.save(boardCategory);
 //    }
 //
-//    public List<BoardCategory> categoryList(){
-//        return boardCategoryRepository.findAll();
-//    }
+    public List<BoardCategory> categoryList(){
+        return boardCategoryRepository.findAll();
+    }
 //
 //    public void categoryDel(Long cno){
 //        boardCategoryRepository.deleteById(cno);

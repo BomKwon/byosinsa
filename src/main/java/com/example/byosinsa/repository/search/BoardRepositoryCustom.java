@@ -1,7 +1,7 @@
 package com.example.byosinsa.repository.search;
 
-import com.example.game.dto.PageRequestDTO;
-import com.example.game.dto.search.BoardSearchDTO;
+import com.example.byosinsa.dto.PageRequestDTO;
+import com.example.byosinsa.dto.search.BoardSearchDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
