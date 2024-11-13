@@ -1,5 +1,6 @@
 package com.example.byosinsa.entity;
 
+import com.example.byosinsa.entity.base.Base;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProductImg {
+public class ProductImg extends Base {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

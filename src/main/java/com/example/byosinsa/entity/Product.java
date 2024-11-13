@@ -1,5 +1,6 @@
 package com.example.byosinsa.entity;
 
+import com.example.byosinsa.entity.base.Base;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Builder
-public class Product {
+public class Product extends Base {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
