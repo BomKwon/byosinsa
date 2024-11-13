@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @Log4j2
 @RequestMapping("/members")
-public class MemberController {
+public class UersController {
 }

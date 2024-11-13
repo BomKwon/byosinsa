@@ -1,11 +1,10 @@
 package com.example.byosinsa.entity;
 
 import com.example.byosinsa.entity.base.Base;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.lang.reflect.Member;
 
 @Entity
 @ToString
@@ -20,6 +19,10 @@ public class Searched extends Base {
     private int sno;
 
     private String SearchKeyword;
+
+    @ManyToOne
+    @JoinColumn(name = "uno")
+    private Users users;
 
 
 }

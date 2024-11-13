@@ -18,15 +18,9 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class ProductService {
 
-    private ProductRepository productRepository;
-    private ProductImgRepository productImgRepository;
-    private ModelMapper modelMapper;
-
-    @Autowired
-    public ProductService(ModelMapper modelMapper, ProductRepository productRepository) {
-        this.modelMapper = modelMapper;
-        this.productRepository = productRepository;
-    }
+    private final ProductRepository productRepository;
+    private final ProductImgRepository productImgRepository;
+    private final ModelMapper modelMapper;
 
     //등록
     public int productRegister(ProductDTO productDTO) {
