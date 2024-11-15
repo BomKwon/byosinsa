@@ -74,6 +74,12 @@
             alert(errorMessage);
         }
 
+        var result = [[${result}]];
+
+        if(result != null) {
+            alert(result)
+        }
+
         let regex = new RegExp("(.*?)\.(exp|sh|zip|alz|tiff)$");
         let maxSize = 10485760; //10MB
 
