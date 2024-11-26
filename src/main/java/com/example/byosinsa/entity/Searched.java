@@ -4,8 +4,6 @@ import com.example.byosinsa.entity.base.Base;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.lang.reflect.Member;
-
 @Entity
 @ToString
 @Data
@@ -18,11 +16,12 @@ public class Searched extends Base {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int sno;
 
+    @Column(nullable = false)
     private String SearchKeyword;
 
     @ManyToOne
     @JoinColumn(name = "uno")
-    private Users users;
+    private User user;
 
 
 }

@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProductImg extends Base {
+public class ProductImg {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

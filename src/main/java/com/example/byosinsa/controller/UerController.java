@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @Log4j2
 @RequestMapping("/members")
-public class UersController {
+public class UerController {
 
     @GetMapping("/join")
     public String join(){

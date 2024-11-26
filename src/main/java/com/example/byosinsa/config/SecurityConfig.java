@@ -1,8 +1,6 @@
 package com.example.byosinsa.config;
 
-
 import jakarta.servlet.annotation.WebListener;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -16,53 +14,58 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
-@RequiredArgsConstructor
 @WebListener
 public class SecurityConfig {
 
-
     @Bean
-    SecurityFilterChain filterChain(HttpSecurity http) throws  Exception{
+    SecurityFilterChain filterChain (HttpSecurity httpSecurity) throws Exception {
 
-        http
+        httpSecurity
+
+                // 권한 페이지 접속권한
                 .authorizeHttpRequests(
-                        (authorizeHttpRequests) -> authorizeHttpRequests
-                                .requestMatchers("/css/**", "/js/**", "/img/**", "/**").permitAll()
+                        authorization -> authorization
+                                .requestMatchers("/members/login/**").permitAll() //로그인페이지는 누구나 접속이 가능한 권한
+                                .requestMatchers("/board/register").authenticated() //로그인 한 사람만 접속 가능
+                                .requestMatchers("/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/user/list").hasRole("ADMIN")
+                                .anyRequest().permitAll()   // 그외 다 열어
+//                            .anyRequest().authenticated()   // 그 이외에는 다 로그인해서 접속해
+                )
+                // 위변조 방지 웹에서 form태그 변경 등의 변조를 방지
+                .csrf( csrf -> csrf.disable())
+                // 로그인
+                .formLogin(
+                        formLogin -> formLogin.loginPage("/members/login") //기본 로그인 페이지 지정
+                                .defaultSuccessUrl("/")                 //로그인이 성공했다면
+                                .usernameParameter("email")             //로그인 <input name="email">
+                        //컨트롤러로 보낼때~~
                 )
 
-                .csrf((csrf) -> csrf
-
-                        .disable()
-                )
-                //                .csrf( (csrf) -> csrf
-//                .ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
-
-                //현재 모든 경로에 대해서 csrf 미사용
-
-                .formLogin(formLogin -> formLogin.loginPage("/user/login")
-                        .defaultSuccessUrl("/")
-                        .usernameParameter("email")
-                        .failureUrl("/user/login/error")
+                // 로그아웃
+                .logout(
+                        logout -> logout
+                                .logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))   //로그아웃 a태그라 생각
+                                //<a href="/user/logout">잘가~~</a>
+                                //세션초기화
+                                .invalidateHttpSession(true)            // 세션 초기화 // localhost:8090으로 간다.
+                                .logoutSuccessUrl("/")                  //dns주소일경우 www.naver.com 까지로 간다.
+                        //컨트롤러에서 만들어줄걸?
 
                 )
+        // 예외처리 // 로그인이 되지 않은 사용자, 권한이 없는 사용자 접속시 취할 행동들
+                .exceptionHandling(
+                        a -> a.authenticationEntryPoint(new CustomAuthenticationEntryPoint()).accessDeniedHandler(new CustomAccessDeniedHandler())
 
-                .logout((logout) -> logout
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-                        .logoutSuccessUrl("/")
-                        .invalidateHttpSession(true));
-
-        return http.build();
+                )
+        ;
+        return httpSecurity.build();
     }
 
-
     @Bean
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    //  스프링 시큐리티의 인증 처리 , 인증은 로그인
-    // AuthenticationManager는 사용자 인증시 앞에서 작성한 UserSecurityService 와 passwordEncoder를
-    //내부적으로 사용 인증과 권한 부여
 
 
 }

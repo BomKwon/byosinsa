@@ -1,9 +1,9 @@
 package com.example.byosinsa.entity;
 
 import com.example.byosinsa.constant.Role;
+import com.example.byosinsa.entity.base.Base;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Entity
 @ToString
@@ -11,7 +11,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Users {
+@Table(name = "users")
+public class User extends Base {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
